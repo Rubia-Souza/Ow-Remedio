@@ -2,10 +2,16 @@ import React from "react";
 import {
     View,
 } from "react-native";
-import Med from "../../dto/Med";
 
+import BellFill from "../../../imgs/icons/BellFill";
+
+import Med, { MedUtils } from "../../dto/Med";
+import NotificationTypes from "../../dto/NotificationTypes";
+
+import If from "../If/If";
 import RadioButton from "../RadioButton/RadioButton";
 import DefaultText from "../Text/DefaultText";
+import styles from "./styles";
 
 interface MedCheckCardProps {
     medInfo: Med;
@@ -14,23 +20,20 @@ interface MedCheckCardProps {
 const MedCheckCard: React.FC<MedCheckCardProps> = ({
     medInfo,
 }) => {
-    const renderTime = (): string => {
-        return `${medInfo.time.getHours()}:${medInfo.time.getMinutes()}`;
-    };
-
-    const renderStock = (): string => {
-        return `${medInfo.actualStock}/${medInfo.maxStock}`;
-    };
-
     return (
-        <View>
+        <View style={styles.container}>
             <RadioButton>
-                <View>
+                <View style={styles.textContainer}>
+                    <View style={styles.medNameContainer}>
+                        <DefaultText style={styles.medName}>
+                            {medInfo.name}
+                        </DefaultText>
+                        <If isTrue={medInfo.notificationType === NotificationTypes.Alarm}>
+                            <BellFill width="30" height="30" />
+                        </If>
+                    </View>
                     <DefaultText>
-                        { medInfo.name }
-                    </DefaultText>
-                    <DefaultText>
-                        {`Horário: ${renderTime()} - ${renderStock()}`}
+                        {`Horário: ${MedUtils.renderTime(medInfo)} - ${MedUtils.renderTime(medInfo)}`}
                     </DefaultText>
                 </View>
             </RadioButton>
