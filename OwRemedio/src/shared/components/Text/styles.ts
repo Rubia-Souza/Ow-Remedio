@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     DefualtText: {
         color: Colors.black2E,
         fontFamily: Fonts.Roboto.light,
-        fontSize: 18,
+        fontSize: 21,
     },
 });
 
