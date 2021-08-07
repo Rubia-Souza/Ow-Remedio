@@ -4,19 +4,19 @@ import Colors from "../../shared/utils/AssetsReferences/Colors";
 
 interface ArrowProps extends SvgProps {
     width?: string;
-    heigth?: string;
+    height?: string;
     color?: string;
 }
 
 const Arrow: React.FC<ArrowProps> = ({
-    width = 512,
-    heigth = 512,
+    width = "512",
+    height = "512",
     color = Colors.black2E,
 }) => {
     return (
         <Svg
             width={width}
-            height={heigth}
+            height={height}
             viewBox="0 0 15 15"
             fill="none"
         >

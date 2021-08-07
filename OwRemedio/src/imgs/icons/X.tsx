@@ -4,19 +4,19 @@ import Colors from "../../shared/utils/AssetsReferences/Colors";
 
 interface xProps extends SvgProps {
     width?: string;
-    heigth?: string;
+    height?: string;
     color?: string;
 }
 
 const X: React.FC<xProps> = ({
-    width = 512,
-    heigth = 512,
+    width = "512",
+    height = "512",
     color = Colors.black2E,
 }) => {
     return (
         <Svg
             width={width}
-            height={heigth}
+            height={height}
             viewBox="0 0 27 27"
             fill="none"
         >

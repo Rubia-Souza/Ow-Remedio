@@ -4,19 +4,19 @@ import Colors from "../../shared/utils/AssetsReferences/Colors";
 
 interface NavCalendarProps extends SvgProps {
     width?: string;
-    heigth?: string;
+    height?: string;
     color?: string;
 }
 
 const NavCalendar: React.FC<NavCalendarProps> = ({
-    width = 512,
-    heigth = 512,
+    width = "512",
+    height = "512",
     color = Colors.black2E,
 }) => {
     return (
         <Svg
             width={width}
-            height={heigth}
+            height={height}
             viewBox="0 0 30 30"
             fill="none"
         >
