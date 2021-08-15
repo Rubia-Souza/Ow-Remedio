@@ -33,7 +33,7 @@ const MedCheckCard: React.FC<MedCheckCardProps> = ({
                         </If>
                     </View>
                     <DefaultText>
-                        {`Horário: ${MedUtils.renderTime(medInfo)} - ${MedUtils.renderTime(medInfo)}`}
+                        {`Horário: ${MedUtils.renderTime(medInfo)} - ${MedUtils.renderStock(medInfo)}`}
                     </DefaultText>
                 </View>
             </RadioButton>
