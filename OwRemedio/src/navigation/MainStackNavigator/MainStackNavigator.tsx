@@ -1,16 +1,17 @@
 import React from "react";
 
-import { createStackNavigator } from "@react-navigation/stack";
+import { createStackNavigator, StackNavigationOptions } from "@react-navigation/stack";
 
-import TabNavigator, { TabNavScreenData } from "../TabNavigator";
+import TabNavigator from "../TabNavigator";
+import { MainStackNavScreensParams } from "./MainStackNavScreensParams";
 
 interface StackNavigatorProps {}
 
-const Stack = createStackNavigator();
+const Stack = createStackNavigator<MainStackNavScreensParams>();
 
 // TODO: Add SplashScreen
 const MainStackNavigator: React.FC<StackNavigatorProps> = ({}) => {
-    const ScreenOptions = {
+    const ScreenOptions: StackNavigationOptions = {
         headerShown: false,
     };
 
@@ -18,9 +19,9 @@ const MainStackNavigator: React.FC<StackNavigatorProps> = ({}) => {
         <React.Fragment>
             <Stack.Navigator 
                 screenOptions={ScreenOptions}
-                initialRouteName={TabNavScreenData.name}>
+                initialRouteName="TabNav">
 
-                <Stack.Screen name={TabNavScreenData.name} component={TabNavigator} />
+                <Stack.Screen name="TabNav" component={TabNavigator} />
             </Stack.Navigator>
         </React.Fragment>
     );

@@ -1,3 +1,3 @@
-export interface TabNavScreensParams {
-    Hoje: undefined;
-}
+export type TabNavScreensParams = {
+    Hoje: undefined,
+};
