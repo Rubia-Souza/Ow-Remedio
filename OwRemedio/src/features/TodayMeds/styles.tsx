@@ -1,2 +1,9 @@
-import React from "react";
-import { StyleSheet } from "react-native";
+import { StyleSheet, } from "react-native";
+
+const sytles = StyleSheet.create({
+    MedCheckCardContainer: {
+        marginBottom: 24,
+    },
+});
+
+export default sytles;
