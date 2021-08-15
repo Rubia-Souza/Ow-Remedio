@@ -1,20 +1,11 @@
-import NotificationTypes from "./NotificationTypes";
-
-interface Med {
-    name: string;
-    time: Date;
-    actualStock: number;
-    maxStock: number;
-    notificationType: NotificationTypes;
-    hasSound: boolean;
-}
+import Med from ".";
 
 export class MedUtils {
     static renderTime(medData: Med): string {
         if(!medData || !medData.time) {
             return "";
         }
-    
+
         return `${medData.time.getHours()}:${medData.time.getMinutes()}`;
     }
 
@@ -26,5 +17,3 @@ export class MedUtils {
         return `${medData.actualStock}/${medData.maxStock}`;
     }
 }
-
-export default Med;
