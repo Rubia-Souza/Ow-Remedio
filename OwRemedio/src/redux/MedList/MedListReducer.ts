@@ -1,8 +1,13 @@
+import { Med1, Med2 } from "../../shared/mocks/MockMed";
 import { ADD_MED, MedListAction } from "./MedListActionsInterfaces";
 import MedListState from "./MedListState";
 
+// TODO: Remove mock
 const InitialState: MedListState = {
-    medList: [],
+    medList: [
+        Med1,
+        Med2,
+    ],
 };
 
 const MedListReducer = (state: MedListState = InitialState, action: MedListAction) => {
