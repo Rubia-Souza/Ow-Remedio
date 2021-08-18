@@ -44,6 +44,6 @@ const MedInfoCard: React.FC<MedInfoCardProps> = ({
             </View>
         </View>
     );
-}
+};
 
 export default MedInfoCard;

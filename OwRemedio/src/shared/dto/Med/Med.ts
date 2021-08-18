@@ -14,10 +14,10 @@ class Med {
         this.id = this.createId();
     }
 
-    private createId(): string {
+    private createId = (): string => {
         const actualDate = new Date();
         return `${this.name}_${actualDate.toISOString()}_${Math.random().toPrecision(7)}`;
-    }
+    };
 }
 
 export default Med;
