@@ -10,8 +10,7 @@ import sytles from "./styles";
 
 interface TodayMedsProps {}
 
-const TodayMeds: React.FC<TodayMedsProps> = ({
-}) => {
+const TodayMeds: React.FC<TodayMedsProps> = ({}) => {
     const medsList: Med[] = useSelector((state: RootState) => state.MedListReducer.medList);
     
     const renderMedCheckCard = (medData: Med) => {

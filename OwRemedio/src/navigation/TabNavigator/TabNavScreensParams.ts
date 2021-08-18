@@ -1,3 +1,3 @@
 export type TabNavScreensParams = {
-    Hoje: undefined,
+    TodayMeds: undefined,
 };
