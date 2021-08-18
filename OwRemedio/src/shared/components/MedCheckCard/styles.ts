@@ -2,7 +2,9 @@ import { StyleSheet, } from "react-native";
 import Colors from "../../utils/AssetsReferences/Colors";
 import Fonts from "../../utils/AssetsReferences/Fonts";
 
-const styles = StyleSheet.create({
+const styles = (
+    isChecked: boolean = false,
+) => StyleSheet.create({
     container: {
         display: "flex",
         flexDirection: "row",
@@ -19,7 +21,8 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 18,
         borderBottomRightRadius: 18,
         borderLeftColor: Colors.lightPurple,
-        backgroundColor: Colors.whiteFE,
+        backgroundColor: isChecked ? Colors.white : Colors.whiteFE,
+        opacity: isChecked ? 0.85 : 1,
     },
     textContainer: {
         marginLeft: 24,
@@ -29,6 +32,12 @@ const styles = StyleSheet.create({
         fontSize: 24,
         marginBottom: 6,
         marginRight: 9,
+        textDecorationLine: isChecked ? "line-through" : "none",
+        color: isChecked ? Colors.gray64 : Colors.black2E,
+    },
+    medTimeStock: {
+        textDecorationLine: isChecked ? "line-through" : "none",
+        color: isChecked ? Colors.gray64 : Colors.black2E,
     },
     medNameContainer: {
         flexDirection: "row",
