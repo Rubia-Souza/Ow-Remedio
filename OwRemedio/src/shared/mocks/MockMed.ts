@@ -9,7 +9,7 @@ export const Med1: Med = new MedBuilder("Buscopan")
     .withNotificationType(NotificationTypes.Alarm).build();
 
 export const Med2: Med = new MedBuilder("Flogoral")
-    .withTime(new Date(0,0, 0, 18, 0, 0))
+    .withTime(new Date(0,0, 0, 3, 0, 0))
     .withMaxStock(30)
     .withActualStock(5)
     .thatHasSound(false)
