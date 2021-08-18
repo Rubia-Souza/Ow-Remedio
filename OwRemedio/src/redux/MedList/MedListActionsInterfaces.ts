@@ -1,4 +1,4 @@
-import { Med } from "../../shared/dto/Med";
+import Med from "../../shared/dto/Med";
 
 export const ADD_MED = "medList/addMed";
 
