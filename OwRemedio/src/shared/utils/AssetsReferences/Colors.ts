@@ -7,9 +7,10 @@ const Colors = {
     brightYellow: "#E1DA28",
     opaqueRed: "#DD5252",
     black2E: "#2E2E2E",
+    whiteF4: "#F4F4F4",
     whiteFE: "#FEFEFE",
     white: "#FFFFFF",
-    grayDA: "#DADAD",
+    grayDA: "#DADADA",
     gray64: "#646464",
     gray6C: "#6C6C6C",
 };

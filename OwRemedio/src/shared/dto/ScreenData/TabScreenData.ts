@@ -1,4 +1,5 @@
 import { BottomTabNavigationOptions } from "@react-navigation/bottom-tabs";
+import { TabBarIconProps } from "../../types/Navigation/NavigationTypes";
 import { ScreenData } from "./ScreenData";
 
 export class TabScreenData extends ScreenData {
@@ -23,10 +24,15 @@ export class TabScreenData extends ScreenData {
         }
     }
 
-    getTabOptions(): BottomTabNavigationOptions {
+    private selectIcon = (props: TabBarIconProps) => {
+        return props.focused ? this.enableIcon : this.disableIcon;
+    };
+
+    getTabOptions = (): BottomTabNavigationOptions => {
         return {
             tabBarLabel: this.tabBarTitle, 
             title: this.headerTitle,
+            tabBarIcon: this.selectIcon,
         };
-    }
+    };
 }
