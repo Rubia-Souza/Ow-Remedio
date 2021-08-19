@@ -24,7 +24,7 @@ const TodayMeds: React.FC<TodayMedsProps> = ({}) => {
     return (
         <FlatList 
             data={medsList} 
-            keyExtractor={(med: Med) => med.name}
+            keyExtractor={(med: Med) => med.id}
             renderItem={
                 ({item: med}) => renderMedCheckCard(med)
             }
