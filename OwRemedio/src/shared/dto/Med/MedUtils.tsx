@@ -2,7 +2,7 @@ import Med from ".";
 
 export class MedUtils {
     static renderTime = (medData: Med): string => {
-        if(!medData || !medData.time) {
+        if(!medData.time) {
             return "";
         }
 
@@ -16,10 +16,14 @@ export class MedUtils {
     };
 
     static renderStock = (medData: Med): string => {
-        if(!medData) {
-            return "";
-        }
-
         return `${medData.actualStock}/${medData.maxStock}`;
+    };
+
+    static isInLowStock = (medData: Med): boolean => {
+        return medData.actualStock <= medData.lowStockWarning;
+    };
+
+    static hasReachFinalDate = (medData: Med): boolean => {
+        return medData.finishData !== null && new Date() > medData.finishData;
     };
 }
