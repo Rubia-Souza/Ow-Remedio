@@ -29,6 +29,7 @@ const styles = StyleSheet.create({
     medNameText: {
         fontSize: 30,
         marginRight: 6,
+        color: Colors.black10,
     },
     exclamationContainer: {
         padding: 3,

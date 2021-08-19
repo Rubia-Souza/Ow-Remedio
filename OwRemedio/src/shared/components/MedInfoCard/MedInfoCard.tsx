@@ -4,19 +4,20 @@ import {
     View, 
 } from "react-native";
 
-import Bell from "../../../imgs/icons/Bell";
-import BellFill from "../../../imgs/icons/BellFill";
-import Edit from "../../../imgs/icons/Edit";
+import styles from "./styles";
 
 import If from "../If/If";
 import DefualtText from "../Text/DefaultText";
 
-import Med, { MedUtils } from "../../dto/Med";
-import styles from "./styles";
+import Bell from "../../../imgs/icons/Bell";
+import BellFill from "../../../imgs/icons/BellFill";
+import Edit from "../../../imgs/icons/Edit";
 import CirclePlus from "../../../imgs/icons/CirclePlus";
 import Exclamation from "../../../imgs/icons/Exclamation";
-import Colors from "../../utils/AssetsReferences/Colors";
 import Check from "../../../imgs/icons/Check";
+
+import Med, { MedUtils } from "../../dto/Med";
+import Colors from "../../utils/AssetsReferences/Colors";
 
 interface MedInfoCardProps {
     medInfo: Med;

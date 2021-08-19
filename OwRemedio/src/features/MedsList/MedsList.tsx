@@ -1,10 +1,13 @@
 import React from "react";
 import { FlatList, View } from "react-native";
 import { useSelector } from "react-redux";
+import { RootState } from "../../store/Reducers";
+
+import AddButton from "../../shared/components/AddButton/AddButton";
 import MedInfoCard from "../../shared/components/MedInfoCard/MedInfoCard";
 
 import Med from "../../shared/dto/Med";
-import { RootState } from "../../store/Reducers";
+
 import styles from "./styles";
 
 interface MedsListProps {}
@@ -20,6 +23,10 @@ const MedsList: React.FC<MedsListProps> = ({}) => {
         );
     };
 
+    const handleAddButtonClick = () => {
+
+    };
+
     return (
         <View>
             <FlatList 
@@ -29,6 +36,10 @@ const MedsList: React.FC<MedsListProps> = ({}) => {
                     ({item: medData}) => renderMedInfoCard(medData)
                 }
             />
+
+            <View style={styles.AddButtonContainer}>
+                <AddButton onClick={handleAddButtonClick} />
+            </View>
         </View>
     );
 };
