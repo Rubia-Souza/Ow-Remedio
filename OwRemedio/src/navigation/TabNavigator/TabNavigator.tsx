@@ -7,7 +7,8 @@ import styles from "./styles";
 import TodayMeds, { TodayMedsScreenData } from "../../features/TodayMeds";
 import Header from "../../shared/components/Header/Header";
 import { TabNavScreensParams } from "./TabNavScreensParams";
-import MedsList, { MedListScreenData } from "../../features/MedsList";
+import { MedListScreenData } from "../../features/MedsList";
+import MedsListStackNavigation from "../MedsListStackNavigation";
 
 interface TabNavigatorProps {}
 
@@ -32,7 +33,7 @@ const TabNavigator: React.FC<TabNavigatorProps> = ({}) => {
                 initialRouteName="TodayMeds">
 
                 <Tab.Screen name="TodayMeds" component={TodayMeds} options={{...TodayMedsScreenData.getTabOptions()}} />
-                <Tab.Screen name="MedsList" component={MedsList} options={{...MedListScreenData.getTabOptions()}} />
+                <Tab.Screen name="MedsListStackNavigation" component={MedsListStackNavigation} options={{...MedListScreenData.getTabOptions()}} />
             </Tab.Navigator>
         </React.Fragment>
     );

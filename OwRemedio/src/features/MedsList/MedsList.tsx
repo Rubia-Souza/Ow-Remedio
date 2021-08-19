@@ -5,6 +5,7 @@ import MedInfoCard from "../../shared/components/MedInfoCard/MedInfoCard";
 
 import Med from "../../shared/dto/Med";
 import { RootState } from "../../store/Reducers";
+import styles from "./styles";
 
 interface MedsListProps {}
 
@@ -13,7 +14,7 @@ const MedsList: React.FC<MedsListProps> = ({}) => {
 
     const renderMedInfoCard = (medData: Med) => {
         return (
-            <View>
+            <View style={styles.MedInfoCardContainer}>
                 <MedInfoCard medInfo={medData} />
             </View>
         );
