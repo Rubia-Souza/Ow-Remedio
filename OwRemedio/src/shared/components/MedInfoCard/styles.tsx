@@ -1,6 +1,5 @@
 import { StyleSheet } from "react-native";
 import Colors from "../../utils/AssetsReferences/Colors";
-import Fonts from "../../utils/AssetsReferences/Fonts";
 
 const styles = StyleSheet.create({
     container: {
@@ -11,29 +10,53 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.8,
         shadowColor: Colors.black2E,
         shadowOffset: { width: 0, height: 1 },
+        paddingVertical: 15,
         paddingHorizontal: 20,
         marginHorizontal: 15,
-        borderLeftWidth: 8,
-        borderTopRightRadius: 12,
-        borderBottomRightRadius: 12,
+        borderLeftWidth: 9,
+        borderTopRightRadius: 18,
+        borderBottomRightRadius: 18,
         borderLeftColor: Colors.lightPurple,
         backgroundColor: Colors.whiteFE,
     },
     textsContainer: {
         flexDirection: "column",
-        backgroundColor: "red",
+    },
+    medName: {
+        flexDirection: "row",
+        alignItems: "center",
     },
     medNameText: {
-        fontSize: 24,
+        fontSize: 30,
+        marginRight: 6,
+    },
+    exclamationContainer: {
+        padding: 3,
+        borderRadius: 50,
+        borderWidth: 3,
+        borderColor: Colors.brightRed,
+    },
+    checkContainer: {
+        padding: 3,
+        borderRadius: 50,
+        borderWidth: 3,
+        borderColor: Colors.brightGreen,
     },
     medTime: {
-        
+        fontSize: 21,
+        marginBottom: 24,
     },
-    medStock: {
-
+    stock: {
+        flexDirection: "row",
+        alignItems: "center",
+    },
+    medStockText: {
+        fontSize: 18,
+        marginLeft: 6,
     },
     buttonsContainer: {
-
+        alignItems: "flex-end",
+        justifyContent: "space-between",
     },
 });
 

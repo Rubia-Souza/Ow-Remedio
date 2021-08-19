@@ -17,7 +17,7 @@ const styles = (
         paddingVertical: 15,
         paddingHorizontal: 20,
         marginHorizontal: 15,
-        borderLeftWidth: 8,
+        borderLeftWidth: 9,
         borderTopRightRadius: 18,
         borderBottomRightRadius: 18,
         borderLeftColor: Colors.lightPurple,
