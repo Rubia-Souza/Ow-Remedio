@@ -1,5 +1,8 @@
 import React from "react";
-import { FlatList, View } from "react-native";
+import { 
+    FlatList, 
+    View,
+} from "react-native";
 import { useSelector } from "react-redux";
 
 import MedCheckCard from "../../shared/components/MedCheckCard/MedCheckCard";
@@ -22,13 +25,15 @@ const TodayMeds: React.FC<TodayMedsProps> = ({}) => {
     };
 
     return (
-        <FlatList 
-            data={medsList} 
-            keyExtractor={(med: Med) => med.id}
-            renderItem={
-                ({item: med}) => renderMedCheckCard(med)
-            }
-        />
+        <View>
+            <FlatList 
+                data={medsList} 
+                keyExtractor={(med: Med) => med.id}
+                renderItem={
+                    ({item: med}) => renderMedCheckCard(med)
+                }
+            />
+        </View>
     );
 };
 

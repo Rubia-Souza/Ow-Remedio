@@ -1,5 +1,8 @@
 import React from "react";
-import { FlatList, View } from "react-native";
+import { 
+    FlatList, 
+    View,
+} from "react-native";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/Reducers";
 
@@ -28,19 +31,21 @@ const MedsList: React.FC<MedsListProps> = ({}) => {
     };
 
     return (
-        <View>
-            <FlatList 
-                data={medList}
-                keyExtractor={(medData: Med) => medData.id}
-                renderItem={
-                    ({item: medData}) => renderMedInfoCard(medData)
-                }
-            />
+        <React.Fragment>
+            <View>
+                <FlatList 
+                    data={medList}
+                    keyExtractor={(medData: Med) => medData.id}
+                    renderItem={
+                        ({item: medData}) => renderMedInfoCard(medData)
+                    }
+                />
+            </View>
 
             <View style={styles.AddButtonContainer}>
                 <AddButton onClick={handleAddButtonClick} />
             </View>
-        </View>
+        </React.Fragment>
     );
 };
 
