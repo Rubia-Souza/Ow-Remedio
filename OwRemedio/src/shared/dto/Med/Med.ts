@@ -5,7 +5,7 @@ class Med {
     name: string = "";
     time: Date = new Date();
     startDate: Date = new Date();
-    finishData: Date | null = null;
+    finishDate: Date | null = null;
     actualStock: number = 0;
     maxStock: number = 0;
     lowStockWarning: number = 0;

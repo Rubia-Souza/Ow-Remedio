@@ -33,6 +33,21 @@ export class MedBuilder {
         return this;
     };
 
+    public withLowStockWarning = (lowStockWarning: number): MedBuilder => {
+        this.med.lowStockWarning = lowStockWarning;
+        return this;
+    };
+
+    public consumingPerUse = (amountConsumedPerUse: number): MedBuilder => {
+        this.med.amountConsumedPerUse = amountConsumedPerUse;
+        return this;
+    };
+
+    public withFinishDate = (finishDate: Date): MedBuilder => {
+        this.med.finishDate = finishDate;
+        return this;
+    };
+
     public build = (): Med => {
         return this.med;
     };

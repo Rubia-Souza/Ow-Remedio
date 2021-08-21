@@ -24,6 +24,6 @@ export class MedUtils {
     };
 
     static hasReachFinalDate = (medData: Med): boolean => {
-        return medData.finishData !== null && new Date() > medData.finishData;
+        return medData.finishDate !== null && new Date() > medData.finishDate;
     };
 }
