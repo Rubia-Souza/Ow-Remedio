@@ -6,6 +6,7 @@ export const Med1: Med = new MedBuilder("Buscopan")
     .withMaxStock(20)
     .withActualStock(10)
     .thatHasSound(true)
+    .withFinishDate(new Date(2020, 3, 2))
     .withNotificationType(NotificationTypes.Alarm).build();
 
 export const Med2: Med = new MedBuilder("Flogoral")
@@ -13,4 +14,5 @@ export const Med2: Med = new MedBuilder("Flogoral")
     .withMaxStock(30)
     .withActualStock(5)
     .thatHasSound(false)
+    .withLowStockWarning(10)
     .withNotificationType(NotificationTypes.Push).build();

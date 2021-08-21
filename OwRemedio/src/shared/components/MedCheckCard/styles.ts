@@ -39,7 +39,7 @@ const styles = (
         fontFamily: Fonts.Roboto.regular,
         fontSize: 24,
         marginBottom: 6,
-        marginRight: 9,
+        marginRight: 12,
         textDecorationLine: props.isChecked ? "line-through" : "none",
         color: props.isChecked ? Colors.gray64 : Colors.black2E,
     },

@@ -55,9 +55,10 @@ const styles = (
             fontSize: 30,
             marginRight: 9,
             color: Colors.black10,
+            textDecorationLine: props.hasFinished ? "line-through" : "none",
         },
         exclamationContainer: {
-            padding: 4,
+            padding: 3,
             borderRadius: 50,
             borderWidth: 2,
             borderColor: Colors.brightRed,

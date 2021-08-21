@@ -45,7 +45,7 @@ const MedCheckCard: React.FC<MedCheckCardProps> = ({
                             {medInfo.name}
                         </DefaultText>
                         <If isTrue={medInfo.notificationType === NotificationTypes.Alarm}>
-                            <BellFill width="30" height="30" color={isChecked ? Colors.gray64 : Colors.black2E} />
+                            <BellFill width="21" height="21" color={isChecked ? Colors.gray64 : Colors.black2E} rotation={-30} />
                         </If>
                     </View>
                     <DefaultText style={styles(getStyleProps()).medTimeStock}>
