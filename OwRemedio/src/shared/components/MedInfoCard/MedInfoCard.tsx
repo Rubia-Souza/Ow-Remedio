@@ -4,7 +4,7 @@ import {
     View, 
 } from "react-native";
 
-import styles from "./styles";
+import styles, { MedInfoCardStyleProps } from "./styles";
 
 import If from "../If/If";
 import DefualtText from "../Text/DefaultText";
@@ -26,42 +26,49 @@ interface MedInfoCardProps {
 const MedInfoCard: React.FC<MedInfoCardProps> = ({
     medInfo,
 }) => {
-    return (
-        <View style={styles.container}>
+    const getStyleProps = (): MedInfoCardStyleProps => {
+        return {
+            hasFinished: MedUtils.hasReachFinalDate(medInfo),
+            isInLowStock: MedUtils.isInLowStock(medInfo),
+        };
+    };
 
-            <View style={styles.textsContainer}>
-                <View style={styles.medName}>
-                    <DefualtText style={styles.medNameText}>
+    return (
+        <View style={styles(getStyleProps()).container}>
+
+            <View style={styles(getStyleProps()).textsContainer}>
+                <View style={styles(getStyleProps()).medName}>
+                    <DefualtText style={styles(getStyleProps()).medNameText}>
                         {medInfo.name}
                     </DefualtText>
 
                     <If isTrue={MedUtils.isInLowStock(medInfo)}>
-                        <View style={styles.exclamationContainer}>
+                        <View style={styles(getStyleProps()).exclamationContainer}>
                             <Exclamation width="18" height="18" color={Colors.brightRed} />
                         </View>
                     </If>
 
                     <If isTrue={MedUtils.hasReachFinalDate(medInfo)}>
-                        <View style={styles.checkContainer}>
+                        <View style={styles(getStyleProps()).checkContainer}>
                             <Check width="18" height="18" color={Colors.brightGreen} />
                         </View>
                     </If>
                 </View>
 
-                <DefualtText style={styles.medTime}>
+                <DefualtText style={styles(getStyleProps()).medTime}>
                     {`às: ${MedUtils.renderTime(medInfo)}`}
                 </DefualtText>
 
-                <TouchableOpacity style={styles.stock}>
-                    <CirclePlus width="24" height="24" />
+                <TouchableOpacity style={styles(getStyleProps()).stock}>
+                    <CirclePlus width="24" height="24" color={MedUtils.isInLowStock(medInfo) ? Colors.brightRed : Colors.black2E} />
 
-                    <DefualtText style={styles.medStockText}>
+                    <DefualtText style={styles(getStyleProps()).medStockText}>
                         {`Remédios: ${MedUtils.renderStock(medInfo)}`}
                     </DefualtText>
                 </TouchableOpacity>
             </View>
 
-            <View style={styles.buttonsContainer}>
+            <View style={styles(getStyleProps()).buttonsContainer}>
                 <View>
                     <If isTrue={medInfo.hasSound}>
                         <TouchableOpacity>
