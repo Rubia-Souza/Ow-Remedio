@@ -33,7 +33,7 @@ const TabNavigator: React.FC<TabNavigatorProps> = ({}) => {
                 initialRouteName="TodayMeds">
 
                 <Tab.Screen name="TodayMeds" component={TodayMeds} options={{...TodayMedsScreenData.getTabOptions()}} />
-                <Tab.Screen name="MedsListStackNavigation" component={MedsListStackNavigation} options={{...MedListScreenData.getTabOptions()}} />
+                <Tab.Screen name="MedsListStackNavigation" component={MedsListStackNavigation} options={{...MedListScreenData.getTabOptions(), tabBarItemStyle: styles.lastTabElementContainer}} />
             </Tab.Navigator>
         </React.Fragment>
     );
