@@ -6,13 +6,7 @@ export class MedUtils {
             return "";
         }
 
-        let time: string = medData.time.toLocaleTimeString();
-        time = time.split(" ")[0];
-
-        const hours = time.split(":")[0];
-        const minutes = time.split(":")[1];
-
-        return `${hours}:${minutes}`;
+        return `${medData.time.hours}:${medData.time.minutes}`;
     };
 
     static renderStock = (medData: Med): string => {

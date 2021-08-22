@@ -6,7 +6,7 @@ import {
 import BellFill from "../../../imgs/icons/BellFill";
 
 import Med, { MedUtils } from "../../dto/Med";
-import NotificationTypes from "../../dto/NotificationTypes";
+import NotificationTypes from "../../enums/NotificationTypes";
 import Colors from "../../utils/AssetsReferences/Colors";
 
 import If from "../If/If";

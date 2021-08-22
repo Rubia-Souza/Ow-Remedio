@@ -1,4 +1,5 @@
-import NotificationTypes from "../NotificationTypes";
+import NotificationTypes from "../../enums/NotificationTypes";
+import Time from "../Time";
 import Med from "./Med";
 
 export class MedBuilder {
@@ -8,7 +9,7 @@ export class MedBuilder {
         this.med = new Med(name);
     }
     
-    public withTime = (time: Date): MedBuilder => {
+    public withTime = (time: Time): MedBuilder => {
         this.med.time = time;
         return this;
     };

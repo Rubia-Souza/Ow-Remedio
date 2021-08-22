@@ -1,9 +1,10 @@
-import NotificationTypes from "../NotificationTypes";
+import NotificationTypes from "../../enums/NotificationTypes";
+import Time from "../Time";
 
 class Med {
     readonly id: string;
     name: string = "";
-    time: Date = new Date();
+    time: Time = Time.EmptyTime;
     startDate: Date = new Date();
     finishDate: Date | null = null;
     actualStock: number = 0;

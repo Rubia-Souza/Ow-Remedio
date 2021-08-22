@@ -1,8 +1,9 @@
 import Med, { MedBuilder } from "../dto/Med";
-import NotificationTypes from "../dto/NotificationTypes";
+import Time from "../dto/Time";
+import NotificationTypes from "../enums/NotificationTypes";
 
 export const Med1: Med = new MedBuilder("Buscopan")
-    .withTime(new Date(0,0, 0, 12, 30, 0))
+    .withTime(new Time(3, 0))
     .withMaxStock(20)
     .withActualStock(10)
     .thatHasSound(true)
@@ -10,7 +11,7 @@ export const Med1: Med = new MedBuilder("Buscopan")
     .withNotificationType(NotificationTypes.Alarm).build();
 
 export const Med2: Med = new MedBuilder("Flogoral")
-    .withTime(new Date(0,0, 0, 3, 0, 0))
+    .withTime(new Time(12, 23))
     .withMaxStock(30)
     .withActualStock(5)
     .thatHasSound(false)

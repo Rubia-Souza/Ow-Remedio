@@ -72,7 +72,7 @@ const MedInfoCard: React.FC<MedInfoCardProps> = ({
                 <View>
                     <If isTrue={medInfo.hasSound}>
                         <TouchableOpacity>
-                            <BellFill width="32" height="32" />
+                            <BellFill width="32" height="32" rotation={-30} />
                         </TouchableOpacity>
                     </If>
                     <If isTrue={!medInfo.hasSound}>
