@@ -17,3 +17,11 @@ export const Med2: Med = new MedBuilder("Flogoral")
     .thatHasSound(false)
     .withLowStockWarning(10)
     .withNotificationType(NotificationTypes.Push).build();
+
+export const Med3: Med = new MedBuilder("Acetato de Ciproterona - 25mg")
+    .withTime(new Time(18, 0))
+    .withMaxStock(30)
+    .withActualStock(25)
+    .consumingPerUse(1)
+    .withLowStockWarning(10)
+    .withNotificationType(NotificationTypes.Alarm).build();
