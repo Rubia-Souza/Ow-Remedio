@@ -6,12 +6,18 @@ import {
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/Reducers";
 
+import styles from "./styles";
+
 import AddButton from "../../shared/components/AddButton/AddButton";
 import MedInfoCard from "../../shared/components/MedInfoCard/MedInfoCard";
+import If from "../../shared/components/If/If";
+import DefualtTitle from "../../shared/components/Title/DefaultTitle";
+import DefualtText from "../../shared/components/Text/DefaultText";
+import SurprisedPills from "../../imgs/icons/SurprisedPills";
 
 import Med from "../../shared/dto/Med";
 
-import styles from "./styles";
+import Colors from "../../shared/utils/AssetsReferences/Colors";
 
 interface MedsListProps {}
 
@@ -32,15 +38,28 @@ const MedsList: React.FC<MedsListProps> = ({}) => {
 
     return (
         <React.Fragment>
-            <View>
-                <FlatList 
-                    data={medList}
-                    keyExtractor={(medData: Med) => medData.id}
-                    renderItem={
-                        ({item: medData}) => renderMedInfoCard(medData)
-                    }
-                />
-            </View>
+            <If isTrue={medList.length !== 0}>
+                <View>
+                    <FlatList 
+                        data={medList}
+                        keyExtractor={(medData: Med) => medData.id}
+                        renderItem={
+                            ({item: medData}) => renderMedInfoCard(medData)
+                        }
+                    />
+                </View>
+            </If>
+            <If isTrue={medList.length === 0}>
+                <View style={styles.NoMedsContainer}>
+                    <SurprisedPills width="258" height="258" color={Colors.grayDA} />
+                    <DefualtTitle style={styles.NoMedsTitleText}>
+                        Você não tem nenhum remédio cadastrado! O_O
+                    </DefualtTitle>
+                    <DefualtText style={styles.NoMedsDirectionsText}>
+                        Pressione o mais para adicionar
+                    </DefualtText>
+                </View>
+            </If>
 
             <View style={styles.AddButtonContainer}>
                 <AddButton onClick={handleAddButtonClick} />

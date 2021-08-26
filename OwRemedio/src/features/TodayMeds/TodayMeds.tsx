@@ -5,11 +5,16 @@ import {
 } from "react-native";
 import { useSelector } from "react-redux";
 
+import HappyPills from "../../imgs/icons/HappyPills";
+import If from "../../shared/components/If/If";
+
 import MedCheckCard from "../../shared/components/MedCheckCard/MedCheckCard";
+import DefualtText from "../../shared/components/Text/DefaultText";
 
 import Med from "../../shared/dto/Med/Med";
+import Colors from "../../shared/utils/AssetsReferences/Colors";
 import { RootState } from "../../store/Reducers";
-import sytles from "./styles";
+import styles from "./styles";
 
 interface TodayMedsProps {}
 
@@ -18,22 +23,32 @@ const TodayMeds: React.FC<TodayMedsProps> = ({}) => {
     
     const renderMedCheckCard = (medData: Med) => {
         return (
-            <View style={sytles.MedCheckCardContainer}>
+            <View style={styles.MedCheckCardContainer}>
                 <MedCheckCard medInfo={medData} />
             </View>
         );
     };
 
     return (
-        <View>
-            <FlatList 
-                data={medsList} 
-                keyExtractor={(med: Med) => med.id}
-                renderItem={
-                    ({item: med}) => renderMedCheckCard(med)
-                }
-            />
-        </View>
+        <React.Fragment>
+            <If isTrue={medsList.length > 0}>
+                <FlatList 
+                    data={medsList} 
+                    keyExtractor={(med: Med) => med.id}
+                    renderItem={
+                        ({item: med}) => renderMedCheckCard(med)
+                    }
+                />
+            </If>
+            <If isTrue={medsList.length === 0}>
+                <View style={styles.NoMedsContainer}>
+                    <HappyPills width="258" height="258" color={Colors.grayDA} />
+                    <DefualtText style={styles.AllMedsTakenText}>
+                        ^o^ Você não tem nenhum remédio para hoje ^.^
+                    </DefualtText>
+                </View>
+            </If>
+        </React.Fragment>
     );
 };
 
