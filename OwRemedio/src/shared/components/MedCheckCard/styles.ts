@@ -2,6 +2,10 @@ import { StyleSheet, } from "react-native";
 import Colors from "../../utils/AssetsReferences/Colors";
 import Fonts from "../../utils/AssetsReferences/Fonts";
 
+export const getIconsColors = (isChecked: boolean): string => {
+    return isChecked ? Colors.gray64 : Colors.black2E;
+};
+
 export interface MedCheckCardStyleProps {
     isChecked?: boolean,
 }

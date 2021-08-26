@@ -4,7 +4,11 @@ import {
     View, 
 } from "react-native";
 
-import styles, { MedInfoCardStyleProps } from "./styles";
+import styles, { 
+    getButtonsIconsColor, 
+    getCirclePlusColor, 
+    MedInfoCardStyleProps,
+} from "./styles";
 
 import If from "../If/If";
 import DefualtText from "../Text/DefaultText";
@@ -16,7 +20,7 @@ import CirclePlus from "../../../imgs/icons/CirclePlus";
 import Exclamation from "../../../imgs/icons/Exclamation";
 import Check from "../../../imgs/icons/Check";
 
-import Med, { MedUtils } from "../../dto/Med";
+import Med, { MedUtils, } from "../../dto/Med";
 import Colors from "../../utils/AssetsReferences/Colors";
 
 interface MedInfoCardProps {
@@ -28,14 +32,12 @@ const MedInfoCard: React.FC<MedInfoCardProps> = ({
 }) => {
     const getStyleProps = (): MedInfoCardStyleProps => {
         return {
-            hasFinished: MedUtils.hasReachFinalDate(medInfo),
-            isInLowStock: MedUtils.isInLowStock(medInfo),
+            medStatus: MedUtils.getMedStatus(medInfo),
         };
     };
 
     return (
         <View style={styles(getStyleProps()).container}>
-
             <View style={styles(getStyleProps()).textsContainer}>
                 <View style={styles(getStyleProps()).medName}>
                     <DefualtText style={styles(getStyleProps()).medNameText}>
@@ -60,7 +62,7 @@ const MedInfoCard: React.FC<MedInfoCardProps> = ({
                 </DefualtText>
 
                 <TouchableOpacity style={styles(getStyleProps()).stock}>
-                    <CirclePlus width="24" height="24" color={MedUtils.isInLowStock(medInfo) ? Colors.brightRed : Colors.black2E} />
+                    <CirclePlus width="24" height="24" color={getCirclePlusColor(MedUtils.getMedStatus(medInfo))} />
 
                     <DefualtText style={styles(getStyleProps()).medStockText}>
                         {`Remédios: ${MedUtils.renderStock(medInfo)}`}
@@ -72,18 +74,18 @@ const MedInfoCard: React.FC<MedInfoCardProps> = ({
                 <View>
                     <If isTrue={medInfo.hasSound}>
                         <TouchableOpacity>
-                            <BellFill width="32" height="32" rotation={-30} />
+                            <BellFill width="32" height="32" rotation={-30} color={getButtonsIconsColor(MedUtils.getMedStatus(medInfo))} />
                         </TouchableOpacity>
                     </If>
                     <If isTrue={!medInfo.hasSound}>
                         <TouchableOpacity>
-                            <Bell width="32" height="32" />
+                            <Bell width="32" height="32" color={getButtonsIconsColor(MedUtils.getMedStatus(medInfo))} />
                         </TouchableOpacity>
                     </If>
                 </View>
 
                 <TouchableOpacity>
-                    <Edit width="32" height="32" />
+                    <Edit width="32" height="32" color={getButtonsIconsColor(MedUtils.getMedStatus(medInfo))} />
                 </TouchableOpacity>
             </View>
         </View>

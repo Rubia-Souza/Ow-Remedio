@@ -3,16 +3,18 @@ import {
     View,
 } from "react-native";
 
+import If from "../If/If";
+import RadioButton from "../RadioButton/RadioButton";
+import DefaultText from "../Text/DefaultText";
 import BellFill from "../../../imgs/icons/BellFill";
 
 import Med, { MedUtils } from "../../dto/Med";
 import NotificationTypes from "../../enums/NotificationTypes";
-import Colors from "../../utils/AssetsReferences/Colors";
 
-import If from "../If/If";
-import RadioButton from "../RadioButton/RadioButton";
-import DefaultText from "../Text/DefaultText";
-import styles, { MedCheckCardStyleProps } from "./styles";
+import styles, { 
+    getIconsColors,
+    MedCheckCardStyleProps
+} from "./styles";
 
 interface MedCheckCardProps {
     medInfo: Med;
@@ -45,7 +47,7 @@ const MedCheckCard: React.FC<MedCheckCardProps> = ({
                             {medInfo.name}
                         </DefaultText>
                         <If isTrue={medInfo.notificationType === NotificationTypes.Alarm}>
-                            <BellFill width="21" height="21" color={isChecked ? Colors.gray64 : Colors.black2E} rotation={-30} />
+                            <BellFill width="21" height="21" color={getIconsColors(isChecked)} rotation={-30} />
                         </If>
                     </View>
                     <DefaultText style={styles(getStyleProps()).medTimeStock}>

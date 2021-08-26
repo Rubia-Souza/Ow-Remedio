@@ -1,29 +1,118 @@
-import { StyleSheet, } from "react-native";
+import { 
+    StyleSheet,
+    TextStyle,
+    ViewStyle,
+} from "react-native";
+
+import MedStatus from "../../enums/MedStatus";
 import Colors from "../../utils/AssetsReferences/Colors";
 
+export const getCirclePlusColor = (medStatus: MedStatus): string => {
+    switch(medStatus) {
+        case(MedStatus.Compleated): {
+            return Colors.gray64;
+        }
+        case(MedStatus.LowInStock): {
+            return Colors.brightRed;
+        }
+        default: {
+            return Colors.black2E;
+        }
+    }
+};
+
+export const getButtonsIconsColor = (medStatus: MedStatus): string => {
+    if (medStatus === MedStatus.Compleated) {
+        return Colors.gray64;
+    }
+    else {
+        return Colors.black2E;
+    }
+};
+
 export interface MedInfoCardStyleProps {
-    hasFinished?: boolean;
-    isInLowStock?: boolean;
+    medStatus?: MedStatus;
 }
 
 const initialState: MedInfoCardStyleProps = {
-    hasFinished: false,
-    isInLowStock: false,
+    medStatus: MedStatus.Default,
 };
 
 const styles = (
     props: MedInfoCardStyleProps = initialState
 ) => {
-    const getMainColorBasedOnStatus = (defualtColor: string = ""): string => {
-        if (props.hasFinished) {
-            return Colors.brightGreen;
+    const getComplementalStyleContainer = (): ViewStyle => {
+        let complementalStyle: ViewStyle = {};
+
+        switch(props.medStatus) {
+            case(MedStatus.Compleated): {
+                complementalStyle = {
+                    borderLeftColor: Colors.brightGreen,
+                    opacity: 0.85,
+                };
+
+                break;
+            }
+            case(MedStatus.LowInStock): {
+                complementalStyle = {
+                    borderLeftColor: Colors.brightRed,
+                };
+
+                break;
+            }
+            case(MedStatus.Default): {
+                complementalStyle = {
+                    borderLeftColor: Colors.grayPurple,
+                };
+
+                break;
+            }
         }
 
-        if (props.isInLowStock) {
-            return Colors.brightRed;
+        return complementalStyle;
+    };
+
+    const getComplementalStyleMedNameText = (): TextStyle => {
+        let complementalStyle: TextStyle = {};
+        
+        if (props.medStatus === MedStatus.Compleated) {
+            complementalStyle = {
+                color: Colors.gray64,
+                textDecorationLine: "line-through",
+            };
         }
 
-        return defualtColor;
+        return complementalStyle;
+    };
+
+    const getComplementalStyleMedTimeText = (): TextStyle => {
+        let complementalStyle: TextStyle = {};
+
+        if (props.medStatus === MedStatus.Compleated) {
+            complementalStyle = {
+                color: Colors.gray64,
+                textDecorationLine: "line-through",
+            }
+        }
+
+        return complementalStyle;
+    };
+
+    const getComplementalStyleMedStockText = (): TextStyle => {
+        let complementalStyle: TextStyle = {};
+
+        if (props.medStatus === MedStatus.Compleated) {
+            complementalStyle = {
+                color: Colors.gray64,
+            }
+        }
+        else {
+            complementalStyle = {
+                color: Colors.black2E,
+            }
+        }
+
+        return complementalStyle;
     };
 
     return StyleSheet.create({
@@ -41,8 +130,8 @@ const styles = (
             borderLeftWidth: 9,
             borderTopRightRadius: 18,
             borderBottomRightRadius: 18,
-            borderLeftColor: getMainColorBasedOnStatus(Colors.grayPurple),
             backgroundColor: Colors.whiteFE,
+            ...getComplementalStyleContainer(),
         },
         textsContainer: {
             flexDirection: "column",
@@ -54,8 +143,7 @@ const styles = (
         medNameText: {
             fontSize: 30,
             marginRight: 9,
-            color: Colors.black10,
-            textDecorationLine: props.hasFinished ? "line-through" : "none",
+            ...getComplementalStyleMedNameText(),
         },
         exclamationContainer: {
             padding: 3,
@@ -72,7 +160,7 @@ const styles = (
         medTime: {
             fontSize: 21,
             marginBottom: 24,
-            textDecorationLine: props.hasFinished ? "line-through" : "none",
+            ...getComplementalStyleMedTimeText(),
         },
         stock: {
             flexDirection: "row",
@@ -81,7 +169,7 @@ const styles = (
         medStockText: {
             fontSize: 18,
             marginLeft: 6,
-            color: props.isInLowStock && !props.hasFinished ? Colors.brightRed : Colors.black2E,
+            ...getComplementalStyleMedStockText(),
         },
         buttonsContainer: {
             alignItems: "flex-end",
