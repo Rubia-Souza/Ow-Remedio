@@ -27,6 +27,9 @@ const styles = StyleSheet.create({
         borderRightWidth: 1,
         height: "85%",
     },
+    lastTabElementContainer: {
+        borderRightWidth: 0,
+    },
     tabIcon: {
         height: "60%",
     },

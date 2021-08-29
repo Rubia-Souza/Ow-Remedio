@@ -3,16 +3,18 @@ import {
     View,
 } from "react-native";
 
-import BellFill from "../../../imgs/icons/BellFill";
-
-import Med, { MedUtils } from "../../dto/Med";
-import NotificationTypes from "../../dto/NotificationTypes";
-import Colors from "../../utils/AssetsReferences/Colors";
-
 import If from "../If/If";
 import RadioButton from "../RadioButton/RadioButton";
 import DefaultText from "../Text/DefaultText";
-import styles from "./styles";
+import BellFill from "../../../imgs/icons/BellFill";
+
+import Med, { MedUtils } from "../../dto/Med";
+import NotificationTypes from "../../enums/NotificationTypes";
+
+import styles, { 
+    getIconsColors,
+    MedCheckCardStyleProps
+} from "./styles";
 
 interface MedCheckCardProps {
     medInfo: Med;
@@ -25,25 +27,30 @@ const initialState = {
 const MedCheckCard: React.FC<MedCheckCardProps> = ({
     medInfo,
 }) => {
-    const [isChecked, setIsChecked] = useState(initialState.inChecked);
+    const [isChecked, setIsChecked] = useState<boolean>(initialState.inChecked);
+    const getStyleProps = (): MedCheckCardStyleProps => {
+        return {
+            isChecked: isChecked,
+        };
+    };
 
     const updateIsChecked = (): void => {
         setIsChecked(!isChecked);
     };
 
     return (
-        <View style={styles(isChecked).container}>
+        <View style={styles(getStyleProps()).container}>
             <RadioButton onCheck={updateIsChecked} onUncheck={updateIsChecked} >
-                <View style={styles(isChecked).textContainer}>
-                    <View style={styles(isChecked).medNameContainer}>
-                        <DefaultText style={styles(isChecked).medName}>
+                <View style={styles(getStyleProps()).textContainer}>
+                    <View style={styles(getStyleProps()).medNameContainer}>
+                        <DefaultText style={styles(getStyleProps()).medName} numberOfLines={1} lineBreakMode="tail">
                             {medInfo.name}
                         </DefaultText>
                         <If isTrue={medInfo.notificationType === NotificationTypes.Alarm}>
-                            <BellFill width="30" height="30" color={isChecked ? Colors.gray64 : Colors.black2E} />
+                            <BellFill width="21" height="21" color={getIconsColors(isChecked)} rotation={-30} />
                         </If>
                     </View>
-                    <DefaultText style={styles(isChecked).medTimeStock}>
+                    <DefaultText style={styles(getStyleProps()).medTimeStock}>
                         {`Horário: ${MedUtils.renderTime(medInfo)} - ${MedUtils.renderStock(medInfo)}`}
                     </DefaultText>
                 </View>

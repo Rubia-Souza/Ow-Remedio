@@ -8,7 +8,7 @@ export class TabScreenData extends ScreenData {
     enableIcon: any;
     disableIcon: any;
 
-    constructor(id: string, tabBarTitle: string = "", headerTitle: string = "", enableIcon: any = null, disableIcon: any = null) {
+    constructor(id: string, tabBarTitle: string = "", enableIcon: any, disableIcon: any,  headerTitle: string = "") {
         super(id);
 
         this.tabBarTitle = tabBarTitle;

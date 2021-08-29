@@ -2,8 +2,20 @@ import { StyleSheet, } from "react-native";
 import Colors from "../../utils/AssetsReferences/Colors";
 import Fonts from "../../utils/AssetsReferences/Fonts";
 
+export const getIconsColors = (isChecked: boolean): string => {
+    return isChecked ? Colors.gray64 : Colors.black2E;
+};
+
+export interface MedCheckCardStyleProps {
+    isChecked?: boolean,
+}
+
+const initialState: MedCheckCardStyleProps = {
+    isChecked: false,
+};
+
 const styles = (
-    isChecked: boolean = false,
+    props: MedCheckCardStyleProps = initialState,
 ) => StyleSheet.create({
     container: {
         display: "flex",
@@ -17,29 +29,34 @@ const styles = (
         paddingVertical: 15,
         paddingHorizontal: 20,
         marginHorizontal: 15,
-        borderLeftWidth: 8,
+        borderLeftWidth: 9,
         borderTopRightRadius: 18,
         borderBottomRightRadius: 18,
         borderLeftColor: Colors.lightPurple,
-        backgroundColor: isChecked ? Colors.white : Colors.whiteFE,
-        opacity: isChecked ? 0.85 : 1,
+        backgroundColor: props.isChecked ? Colors.white : Colors.whiteFE,
+        opacity: props.isChecked ? 0.85 : 1,
     },
     textContainer: {
-        marginLeft: 24,
+        flex: 1,
+        marginLeft: 12,
     },
     medName: {
-        fontFamily: Fonts.Roboto.regular,
+        flexShrink: 1,
         fontSize: 24,
         marginBottom: 6,
         marginRight: 9,
-        textDecorationLine: isChecked ? "line-through" : "none",
-        color: isChecked ? Colors.gray64 : Colors.black2E,
+        fontFamily: Fonts.Roboto.regular,
+        textDecorationLine: props.isChecked ? "line-through" : "none",
+        color: props.isChecked ? Colors.gray64 : Colors.black2E,
     },
     medTimeStock: {
-        textDecorationLine: isChecked ? "line-through" : "none",
-        color: isChecked ? Colors.gray64 : Colors.black2E,
+        fontSize: 18,
+        fontFamily: Fonts.Roboto.light,
+        textDecorationLine: props.isChecked ? "line-through" : "none",
+        color: props.isChecked ? Colors.gray64 : Colors.black2E,
     },
     medNameContainer: {
+        width: "100%",
         flexDirection: "row",
         alignSelf: "flex-start",
     },

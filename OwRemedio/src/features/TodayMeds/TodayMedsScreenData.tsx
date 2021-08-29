@@ -7,7 +7,7 @@ import DayFill from "../../imgs/icons/DayFill";
 export const TodayMedsScreenData = new TabScreenData(
     "TodayMeds", 
     "Hoje", 
-    "Próximos Remédios", 
     <DayFill width="39" height="39" />, 
-    <Day width="39" height="39" />
+    <Day width="39" height="39" />,
+    "Próximos Remédios"
 );

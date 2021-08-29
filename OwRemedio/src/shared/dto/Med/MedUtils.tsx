@@ -1,25 +1,36 @@
 import Med from ".";
+import MedStatus from "../../enums/MedStatus";
 
 export class MedUtils {
     static renderTime = (medData: Med): string => {
-        if(!medData || !medData.time) {
+        if(!medData.time) {
             return "";
         }
 
-        let time: string = medData.time.toLocaleTimeString();
-        time = time.split(" ")[0];
-
-        const hours = time.split(":")[0];
-        const minutes = time.split(":")[1];
-
-        return `${hours}:${minutes}`;
+        return `${medData.time.hours}:${medData.time.minutes}`;
     };
 
     static renderStock = (medData: Med): string => {
-        if(!medData) {
-            return "";
-        }
-
         return `${medData.actualStock}/${medData.maxStock}`;
+    };
+
+    static isInLowStock = (medData: Med): boolean => {
+        return medData.actualStock <= medData.lowStockWarning;
+    };
+
+    static hasReachFinalDate = (medData: Med): boolean => {
+        return medData.finishDate !== null && new Date() > medData.finishDate;
+    };
+
+    static getMedStatus = (medData: Med): MedStatus => {
+        if (this.hasReachFinalDate(medData)) {
+            return MedStatus.Compleated;
+        }
+        else if (this.isInLowStock(medData)) {
+            return MedStatus.LowInStock;
+        }
+        else {
+            return MedStatus.Default;
+        }
     };
 }

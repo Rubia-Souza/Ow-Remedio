@@ -1,11 +1,16 @@
-import NotificationTypes from "../NotificationTypes";
+import NotificationTypes from "../../enums/NotificationTypes";
+import Time from "../Time";
 
 class Med {
     readonly id: string;
     name: string = "";
-    time: Date = new Date();
+    time: Time = Time.EmptyTime;
+    startDate: Date = new Date();
+    finishDate: Date | null = null;
     actualStock: number = 0;
     maxStock: number = 0;
+    lowStockWarning: number = 0;
+    amountConsumedPerUse: number = 0;
     notificationType: NotificationTypes = NotificationTypes.Push;
     hasSound: boolean = false;
 
