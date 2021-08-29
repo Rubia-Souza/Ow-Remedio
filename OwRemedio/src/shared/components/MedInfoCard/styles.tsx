@@ -6,6 +6,7 @@ import {
 
 import MedStatus from "../../enums/MedStatus";
 import Colors from "../../utils/AssetsReferences/Colors";
+import Fonts from "../../utils/AssetsReferences/Fonts";
 
 export const getCirclePlusColor = (medStatus: MedStatus): string => {
     switch(medStatus) {
@@ -164,6 +165,7 @@ const styles = (
         medTime: {
             fontSize: 21,
             marginBottom: 24,
+            fontFamily: Fonts.Roboto.light,
             ...getComplementalStyleMedTimeText(),
         },
         stock: {
@@ -173,6 +175,7 @@ const styles = (
         medStockText: {
             fontSize: 18,
             marginLeft: 6,
+            fontFamily: Fonts.Roboto.light,
             ...getComplementalStyleMedStockText(),
         },
         buttonsContainer: {
