@@ -38,13 +38,13 @@ const styles = (
     },
     textContainer: {
         flex: 1,
-        marginLeft: 18,
+        marginLeft: 12,
     },
     medName: {
         flexShrink: 1,
         fontSize: 24,
         marginBottom: 6,
-        marginRight: 12,
+        marginRight: 9,
         fontFamily: Fonts.Roboto.regular,
         textDecorationLine: props.isChecked ? "line-through" : "none",
         color: props.isChecked ? Colors.gray64 : Colors.black2E,

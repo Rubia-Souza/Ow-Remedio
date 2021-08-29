@@ -144,18 +144,19 @@ const styles = (
         },
         medNameText: {
             fontSize: 27,
-            marginLeft: 9,
             flexGrow: 1,
             ...getComplementalStyleMedNameText(),
         },
         exclamationContainer: {
             padding: 3,
+            marginRight: 9,
             borderWidth: 2,
             borderRadius: 50,
             borderColor: Colors.brightRed,
         },
         checkContainer: {
             padding: 4,
+            marginRight: 9,
             borderWidth: 2,
             borderRadius: 50,
             borderColor: Colors.brightGreen,

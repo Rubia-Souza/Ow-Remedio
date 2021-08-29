@@ -44,7 +44,7 @@ const TodayMeds: React.FC<TodayMedsProps> = ({}) => {
                 <View style={styles.NoMedsContainer}>
                     <HappyPills width="258" height="258" color={Colors.grayDA} />
                     <DefualtText style={styles.AllMedsTakenText}>
-                        ^o^ Você não tem nenhum remédio para hoje ^.^
+                        {">.<"} Você não tem nenhum remédio para hoje ^.^
                     </DefualtText>
                 </View>
             </If>
