@@ -43,7 +43,7 @@ const MedCheckCard: React.FC<MedCheckCardProps> = ({
             <RadioButton onCheck={updateIsChecked} onUncheck={updateIsChecked} >
                 <View style={styles(getStyleProps()).textContainer}>
                     <View style={styles(getStyleProps()).medNameContainer}>
-                        <DefaultText style={styles(getStyleProps()).medName}>
+                        <DefaultText style={styles(getStyleProps()).medName} numberOfLines={1} lineBreakMode="tail">
                             {medInfo.name}
                         </DefaultText>
                         <If isTrue={medInfo.notificationType === NotificationTypes.Alarm}>

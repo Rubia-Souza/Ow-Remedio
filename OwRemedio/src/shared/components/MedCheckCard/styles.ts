@@ -37,21 +37,26 @@ const styles = (
         opacity: props.isChecked ? 0.85 : 1,
     },
     textContainer: {
-        marginLeft: 24,
+        flex: 1,
+        marginLeft: 18,
     },
     medName: {
-        fontFamily: Fonts.Roboto.regular,
+        flexShrink: 1,
         fontSize: 24,
         marginBottom: 6,
         marginRight: 12,
+        fontFamily: Fonts.Roboto.regular,
         textDecorationLine: props.isChecked ? "line-through" : "none",
         color: props.isChecked ? Colors.gray64 : Colors.black2E,
     },
     medTimeStock: {
+        fontSize: 18,
+        fontFamily: Fonts.Roboto.light,
         textDecorationLine: props.isChecked ? "line-through" : "none",
         color: props.isChecked ? Colors.gray64 : Colors.black2E,
     },
     medNameContainer: {
+        width: "100%",
         flexDirection: "row",
         alignSelf: "flex-start",
     },

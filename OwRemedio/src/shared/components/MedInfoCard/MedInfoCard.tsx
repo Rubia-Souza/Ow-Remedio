@@ -1,12 +1,12 @@
 import React from "react";
-import { 
+import {
     TouchableOpacity,
-    View, 
+    View,
 } from "react-native";
 
-import styles, { 
-    getButtonsIconsColor, 
-    getCirclePlusColor, 
+import styles, {
+    getButtonsIconsColor,
+    getCirclePlusColor,
     MedInfoCardStyleProps,
 } from "./styles";
 
@@ -40,11 +40,7 @@ const MedInfoCard: React.FC<MedInfoCardProps> = ({
         <View style={styles(getStyleProps()).container}>
             <View style={styles(getStyleProps()).textsContainer}>
                 <View style={styles(getStyleProps()).medName}>
-                    <DefualtText style={styles(getStyleProps()).medNameText}>
-                        {medInfo.name}
-                    </DefualtText>
-
-                    <If isTrue={MedUtils.isInLowStock(medInfo)}>
+                    <If isTrue={MedUtils.isInLowStock(medInfo) && !MedUtils.hasReachFinalDate(medInfo)}>
                         <View style={styles(getStyleProps()).exclamationContainer}>
                             <Exclamation width="18" height="18" color={Colors.brightRed} />
                         </View>
@@ -55,6 +51,10 @@ const MedInfoCard: React.FC<MedInfoCardProps> = ({
                             <Check width="18" height="18" color={Colors.brightGreen} />
                         </View>
                     </If>
+                    
+                    <DefualtText style={styles(getStyleProps()).medNameText} numberOfLines={2} lineBreakMode="tail" >
+                        {medInfo.name}
+                    </DefualtText>
                 </View>
 
                 <DefualtText style={styles(getStyleProps()).medTime}>
@@ -64,7 +64,7 @@ const MedInfoCard: React.FC<MedInfoCardProps> = ({
                 <TouchableOpacity style={styles(getStyleProps()).stock}>
                     <CirclePlus width="24" height="24" color={getCirclePlusColor(MedUtils.getMedStatus(medInfo))} />
 
-                    <DefualtText style={styles(getStyleProps()).medStockText}>
+                    <DefualtText numberOfLines={1} lineBreakMode="tail" style={styles(getStyleProps()).medStockText}>
                         {`Remédios: ${MedUtils.renderStock(medInfo)}`}
                     </DefualtText>
                 </TouchableOpacity>

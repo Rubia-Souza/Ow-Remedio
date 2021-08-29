@@ -134,6 +134,8 @@ const styles = (
             ...getComplementalStyleContainer(),
         },
         textsContainer: {
+            flexShrink: 1,
+            paddingRight: 9,
             flexDirection: "column",
         },
         medName: {
@@ -141,20 +143,21 @@ const styles = (
             alignItems: "center",
         },
         medNameText: {
-            fontSize: 30,
-            marginRight: 9,
+            fontSize: 27,
+            marginLeft: 9,
+            flexGrow: 1,
             ...getComplementalStyleMedNameText(),
         },
         exclamationContainer: {
             padding: 3,
-            borderRadius: 50,
             borderWidth: 2,
+            borderRadius: 50,
             borderColor: Colors.brightRed,
         },
         checkContainer: {
             padding: 4,
-            borderRadius: 50,
             borderWidth: 2,
+            borderRadius: 50,
             borderColor: Colors.brightGreen,
         },
         medTime: {
