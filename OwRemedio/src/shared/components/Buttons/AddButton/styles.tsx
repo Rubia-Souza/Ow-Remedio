@@ -1,5 +1,5 @@
 import { StyleSheet } from "react-native";
-import Colors from "../../utils/AssetsReferences/Colors";
+import Colors from "../../../utils/AssetsReferences/Colors";
 
 const styles = StyleSheet.create({
     Background: {

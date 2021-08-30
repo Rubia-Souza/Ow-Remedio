@@ -5,8 +5,8 @@ import {
 } from "react-native";
 import styles from "./styles";
 
-import If from "../If/If";
-import { hasSetFunctionValue } from "../../utils/ComponentsFunctions";
+import If from "../../If/If";
+import { hasSetFunctionValue } from "../../../utils/ComponentsFunctions";
 
 interface RadioButtonProps {
     onCheck?: any;
@@ -23,7 +23,7 @@ const intialState: RadioButtonState = {
     isChecked: false,
 };
 
-const RadioButton: React.FC<RadioButtonProps> = ({
+export const RadioButton: React.FC<RadioButtonProps> = ({
     onCheck = null,
     onUncheck = null,
     children = null,
@@ -53,5 +53,3 @@ const RadioButton: React.FC<RadioButtonProps> = ({
         </TouchableOpacity>
     );
 };
-
-export default RadioButton;

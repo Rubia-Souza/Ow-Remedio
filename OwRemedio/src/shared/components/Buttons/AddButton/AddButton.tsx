@@ -3,15 +3,15 @@ import { GestureResponderEvent, TouchableOpacity } from "react-native";
 
 import styles from "./styles";
 
-import Plus from "../../../imgs/icons/Plus";
+import Plus from "../../../../imgs/icons/Plus";
 
-import Colors from "../../utils/AssetsReferences/Colors";
+import Colors from "../../../utils/AssetsReferences/Colors";
 
 interface AddButtonProps {
     onClick: Function;
 }
 
-const AddButton: React.FC<AddButtonProps> = ({
+export const AddButton: React.FC<AddButtonProps> = ({
     onClick,
 }) => {
     return (
@@ -20,5 +20,3 @@ const AddButton: React.FC<AddButtonProps> = ({
         </TouchableOpacity>
     );
 };
-
-export default AddButton;

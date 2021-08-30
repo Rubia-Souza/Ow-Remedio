@@ -4,7 +4,7 @@ import {
 } from "react-native";
 
 import If from "../If/If";
-import RadioButton from "../RadioButton/RadioButton";
+import { RadioButton, } from "../Inputs";
 import DefaultText from "../Text/DefaultText";
 import BellFill from "../../../imgs/icons/BellFill";
 

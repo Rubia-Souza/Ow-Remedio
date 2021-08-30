@@ -8,7 +8,7 @@ import { RootState } from "../../store/Reducers";
 
 import styles from "./styles";
 
-import AddButton from "../../shared/components/AddButton/AddButton";
+import { AddButton, } from "../../shared/components/Buttons";
 import MedInfoCard from "../../shared/components/MedInfoCard/MedInfoCard";
 import If from "../../shared/components/If/If";
 import DefualtTitle from "../../shared/components/Title/DefaultTitle";
