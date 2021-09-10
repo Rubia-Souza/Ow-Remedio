@@ -1,16 +1,17 @@
 import React from "react";
 import { 
-    FlatList, 
+    FlatList,
     View,
 } from "react-native";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/Reducers";
+import { useNavigation } from "@react-navigation/core";
 
 import styles from "./styles";
 
+import If from "../../shared/components/If/If";
 import { AddButton, } from "../../shared/components/Buttons";
 import MedInfoCard from "../../shared/components/MedInfoCard/MedInfoCard";
-import If from "../../shared/components/If/If";
 import DefualtTitle from "../../shared/components/Title/DefaultTitle";
 import DefualtText from "../../shared/components/Text/DefaultText";
 import SurprisedPills from "../../imgs/icons/SurprisedPills";
@@ -18,11 +19,13 @@ import SurprisedPills from "../../imgs/icons/SurprisedPills";
 import Med from "../../shared/dto/Med";
 
 import Colors from "../../shared/utils/AssetsReferences/Colors";
+import { MedListNavigationProps } from "../../navigation/MedsListStackNavigation";
 
 interface MedsListProps {}
 
 const MedsList: React.FC<MedsListProps> = ({}) => {
     const medList: Med[] = useSelector((state: RootState) => state.MedListReducer.medList);
+    const navigation = useNavigation<MedListNavigationProps>();
 
     const renderMedInfoCard = (medData: Med) => {
         return (
@@ -33,7 +36,7 @@ const MedsList: React.FC<MedsListProps> = ({}) => {
     };
 
     const handleAddButtonClick = () => {
-
+        navigation.navigate("AddEditMed");
     };
 
     return (
