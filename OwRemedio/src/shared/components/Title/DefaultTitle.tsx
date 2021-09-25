@@ -6,26 +6,26 @@ import {
 
 import styles from "./styles";
 
-interface DefualtTitleProps extends TextProps {
+interface DefaultTitleProps extends TextProps {
     style?: any;
     children?: any;
 }
 
-const initialState: DefualtTitleProps = {
+const initialState: DefaultTitleProps = {
     style: {},
     children: null,
 };
 
-const DefualtTitle: React.FC<DefualtTitleProps> = (
-    props: DefualtTitleProps
+const DefaultTitle: React.FC<DefaultTitleProps> = (
+    props: DefaultTitleProps
 ) => {
     return (
-        <Text style={[{...styles.DefualtTitle}, {...props.style}]} {...props}>
+        <Text {...props} style={[styles.DefaultTitle, props.style]}>
             {props.children}
         </Text>
     );
 };
 
-DefualtTitle.defaultProps = initialState;
+DefaultTitle.defaultProps = initialState;
 
-export default DefualtTitle;
+export default DefaultTitle;

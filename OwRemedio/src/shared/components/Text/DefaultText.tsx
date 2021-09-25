@@ -6,26 +6,26 @@ import {
 
 import styles from "./styles";
 
-interface DefualtTextProps extends TextProps {
+interface DefaultTextProps extends TextProps {
     style?: any;
     children?: any;
 }
 
-const initialState: DefualtTextProps = {
+const initialState: DefaultTextProps = {
     style: {},
     children: null,
 };
 
-const DefualtText: React.FC<DefualtTextProps> = (
-    props: DefualtTextProps
+const DefaultText: React.FC<DefaultTextProps> = (
+    props: DefaultTextProps
 ) => {
     return (
-        <Text style={[{...styles.DefualtText}, {...props.style}]} {...props}>
+        <Text {...props} style={[styles.DefaultText, props.style]} >
             {props.children}
         </Text>
     );
 };
 
-DefualtText.defaultProps = initialState;
+DefaultText.defaultProps = initialState;
 
-export default DefualtText;
+export default DefaultText;
