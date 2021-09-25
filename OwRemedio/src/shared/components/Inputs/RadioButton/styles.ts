@@ -1,7 +1,17 @@
-import { StyleSheet } from "react-native";
+import {
+    StyleSheet,
+    StyleProp,
+    ViewStyle,
+} from "react-native";
 import Colors from "../../../utils/AssetsReferences/Colors";
 
-export const styles = StyleSheet.create({
+export interface RadioButtonStyles {
+    Container?: StyleProp<ViewStyle>;
+    RadioButtonBorder?: StyleProp<ViewStyle>;
+    RadioButtonCircle?: StyleProp<ViewStyle>;
+}
+
+const styles = StyleSheet.create({
     container: {
         flexDirection: "row",
         justifyContent: "center",
