@@ -14,6 +14,8 @@ const Colors = {
     grayDA: "#DADADA",
     gray64: "#646464",
     gray6C: "#6C6C6C",
+    gray9E: "#9E9E9E",
+    transparent: "transparent",
 };
 
 export default Colors;
