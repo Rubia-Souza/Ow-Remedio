@@ -50,9 +50,7 @@ export const Checkbox: React.FC<CheckboxProps> = (
     };
 
     const toggleCheck = (): void => {
-        console.log(IsChecked);
         setIsChecked(!IsChecked);
-        console.log(IsChecked);
 
         if (IsChecked && hasSetFunctionValue(props.onCheck)) {
             props.onCheck();
