@@ -7,3 +7,7 @@ export const addLeftZeros = (num: number, finalSize: number) => {
 
     return numString;
 };
+
+export const createDumbKey = (): string => {
+    return `${new Date().toISOString()}_${Math.random()}`;
+};
