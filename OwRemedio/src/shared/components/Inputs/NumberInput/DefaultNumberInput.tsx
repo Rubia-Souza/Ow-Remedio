@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
     View,
     TextInput,
@@ -31,15 +31,78 @@ const defaultProps: DefaultNumberInputProps = {
     elementsStyles: {},
 };
 
+interface DefaultNumberState {
+    ActualValue: string;
+}
+
+const initialState: DefaultNumberState = {
+    ActualValue: "0",
+};
+
 export const DefaultNumberInput: React.FC<DefaultNumberInputProps> = (
     props: DefaultNumberInputProps
 ) => {
-    const handleUpArrowPress = () => {
+    const [ActualValue, setActualValue] = useState<string>(initialState.ActualValue);
+    const [PreviusEdtingNumberValue, setPreviusEdtingNumberValue] = useState<string>(ActualValue);
 
+    if (!!props.value) {
+        setActualValue(props.value);
+    }
+
+    const registerBeforeEditingNumber = (): void => {
+        setPreviusEdtingNumberValue(ActualValue);
     };
 
-    const handleDownArrowPress = () => {
+    const handleKeyboardInput = (text: string): void => {
+        setActualValue(text);
+    };
 
+    const validateKeyboardInput = (): void => {
+        const inputNumber: number = parseFloat(ActualValue);
+
+        let isHigherThanMax: boolean = true;
+        if (!!props.maxValue) {
+            isHigherThanMax = inputNumber >= props.maxValue;
+        }
+
+        let isLowerThanMin: boolean = true;
+        if (!!props.minValue) {
+            isLowerThanMin = inputNumber <= props.minValue;
+        }
+
+        if (!isHigherThanMax || !isLowerThanMin) {
+            setActualValue(PreviusEdtingNumberValue);
+        }
+    };
+
+    const handleUpArrowPress = (): void => {
+        let newValue: number = parseFloat(ActualValue);
+
+        if (!!props.incrementStep) {
+            newValue = parseFloat(ActualValue) + props.incrementStep;
+        }
+
+        if (!!!props.maxValue) {
+            setActualValue(newValue.toString());
+        }
+        else if (newValue <= props.maxValue) {
+            setActualValue(newValue.toString());
+        }
+    };
+    
+    const handleDownArrowPress = (): void => {
+        let newValue: number = parseFloat(ActualValue);
+        
+        if (!!props.incrementStep) {
+            newValue = parseFloat(ActualValue) - props.incrementStep;
+        }
+
+        if (!!!props.minValue) {
+            setActualValue(newValue.toString());
+        }
+        else if (newValue >= props.minValue) {
+            setActualValue(newValue.toString());
+        }
     };
 
     return (
@@ -51,14 +114,19 @@ export const DefaultNumberInput: React.FC<DefaultNumberInputProps> = (
                 <TextInput
                     placeholderTextColor={Colors.gray9E}
                     keyboardType="numeric"
+                    onChangeText={handleKeyboardInput}
+                    onEndEditing={validateKeyboardInput}
+                    selectTextOnFocus={true}
+                    value={ActualValue.toString()}
+                    onFocus={registerBeforeEditingNumber}
                     {...props}
                     style={[styles.TextInput, props.elementsStyles?.DisplayTextInput]}
                 />
                 <View style={styles.ButtonsContainer}>
-                    <TouchableOpacity style={styles.UpArrow}>
+                    <TouchableOpacity style={styles.UpArrow} onPress={handleUpArrowPress}>
                         <Arrow height="18" width="18" color={Colors.gray9E} rotation={-180} />
                     </TouchableOpacity>
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={handleDownArrowPress}>
                         <Arrow height="18" width="18" color={Colors.gray9E} />
                     </TouchableOpacity>
                 </View>
