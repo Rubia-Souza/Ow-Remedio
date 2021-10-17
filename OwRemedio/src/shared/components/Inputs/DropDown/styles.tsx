@@ -3,10 +3,6 @@ import { StyleSheet, } from "react-native";
 import Colors from "../../../utils/AssetsReferences/Colors";
 import Fonts from "../../../utils/AssetsReferences/Fonts";
 
-export interface DropDownElementsStyles {
-    
-}
-
 const styles = StyleSheet.create({
     Label: {
         marginLeft: 30,
@@ -35,32 +31,6 @@ const styles = StyleSheet.create({
         flex: 1,
         fontSize: 18,
         marginRight: 3,
-        color: Colors.black2E,
-        fontFamily: Fonts.Roboto.light,
-    },
-    List: {
-        zIndex: 2,
-        marginTop: -9,
-        width: "85%",
-        maxHeight: 300,
-        alignSelf: "center",
-        backgroundColor: Colors.whiteFE,
-        borderWidth: 1.5,
-        borderColor: Colors.whiteF4,
-        elevation: 3,
-        shadowRadius: 3,
-        shadowOpacity: 0.8,
-        shadowColor: Colors.black2E,
-        shadowOffset: { width: 0, height: 2 },
-    },
-    OptionsContainer: {
-        flex: 1,
-        padding: 12,
-        borderBottomWidth: 1,
-        borderColor: Colors.whiteF4,
-    },
-    OptionText: {
-        fontSize: 18,
         color: Colors.black2E,
         fontFamily: Fonts.Roboto.light,
     },

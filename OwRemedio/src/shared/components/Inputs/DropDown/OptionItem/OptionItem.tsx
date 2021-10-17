@@ -1,5 +1,5 @@
 import React from "react";
-import { 
+import {
     StyleProp,
     TextStyle,
     TouchableOpacity,
@@ -8,24 +8,62 @@ import {
 
 import DefaultText from "../../../Text/DefaultText";
 
-import { DropDownItem, } from "../DropDownItem";
+import { DropDownItem, EmptyDropDownItem, } from "../DropDownItem";
+import { OptionItemStyles, Styles, } from "./styles";
+
+import { hasSetFunctionValue, } from "../../../../utils/ComponentsFunctions";
+
+export interface ItemData {
+    id: string;
+    optionData: DropDownItem<any>;
+    isSelected: boolean;
+}
 
 interface OptionItemProps {
-    item: DropDownItem<any>;
+    data: ItemData;
+    onPress?: any;
     textStyle?: StyleProp<TextStyle>;
     containerStyle?: StyleProp<ViewStyle>;
 }
 
+const defaultProps: OptionItemProps = {
+    data: {
+        id: "",
+        optionData: EmptyDropDownItem,
+        isSelected: false,
+    },
+    onPress: undefined,
+    textStyle: {},
+    containerStyle: {},
+};
+
 const OptionsItem: React.FC<OptionItemProps> = (
     props: OptionItemProps
 ) => {
+    const getStylesProps = (): OptionItemStyles => {
+        return {
+            isSelected: props.data.isSelected,
+        };
+    };
+
+    const handlePress = (): void => {
+        if (hasSetFunctionValue(props.onPress)) {
+            props.onPress(props.data.id, props.data.optionData);
+        }
+    };
+
     return (
-        <TouchableOpacity style={props?.containerStyle}>
-            <DefaultText style={props?.textStyle}>
-                {props.item.text}
+        <TouchableOpacity 
+            onPress={handlePress}
+            style={[props?.containerStyle, Styles.getSheet(getStylesProps()).OptionsContainer]}
+        >
+            <DefaultText style={[props?.textStyle, Styles.getSheet(getStylesProps()).OptionText]}>
+                {props.data.optionData.text}
             </DefaultText>
         </TouchableOpacity>
     );
 };
+
+OptionsItem.defaultProps = defaultProps;
 
 export default OptionsItem;

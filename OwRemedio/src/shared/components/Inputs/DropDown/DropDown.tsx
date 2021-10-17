@@ -1,7 +1,10 @@
 import React, { useState } from "react";
 import {
+    StyleProp,
+    TextStyle,
     TouchableOpacity,
     View,
+    ViewStyle,
 } from "react-native";
 
 import Arrow from "../../../../imgs/icons/Arrow";
@@ -11,7 +14,7 @@ import If from "../../If/If";
 import styles from "./styles";
 import Colors from "../../../utils/AssetsReferences/Colors";
 
-import { DropDownItem, } from "./DropDownItem";
+import { DropDownItem, EmptyDropDownItem, } from "./DropDownItem";
 import OptionList from "./OptionsList/OptionsList";
 
 export interface DropDowProps {
@@ -19,15 +22,33 @@ export interface DropDowProps {
     placeholder?: string;
     value?: DropDownItem<any>;
     options: DropDownItem<any>[];
+    ListStyle?: StyleProp<ViewStyle>;
+    TextStyle?: StyleProp<TextStyle>;
+    OptionContainerStyle?: StyleProp<ViewStyle>;
 }
 
-export const DropDow: React.FC<DropDowProps> = (
+interface DropDownState {
+    IsModalOpen: boolean;
+    SelectedOption: DropDownItem<any>;
+}
+
+const initialState: DropDownState = {
+    IsModalOpen: false,
+    SelectedOption: EmptyDropDownItem,
+};
+
+export const DropDown: React.FC<DropDowProps> = (
     props: DropDowProps
 ) => {
-    const [IsModalOpen, setIsModalOpen] = useState<boolean>(false);
+    const [IsModalOpen, setIsModalOpen] = useState<boolean>(initialState.IsModalOpen);
+    const [SelectedOption, setSelectedOption] = useState<DropDownItem<any>>(initialState.SelectedOption);
 
-    const toggleModal = () => {
+    const toggleModal = (): void => {
         setIsModalOpen(!IsModalOpen);
+    };
+
+    const onOptionPress = (selectedOption: DropDownItem<any>): void => {
+        
     };
 
     return (
@@ -35,7 +56,10 @@ export const DropDow: React.FC<DropDowProps> = (
             <DefaultText style={styles.Label}>
                 {props.label}
             </DefaultText>
-            <TouchableOpacity style={styles.InputContainer}>
+            <TouchableOpacity 
+                onPress={toggleModal}
+                style={styles.InputContainer}
+            >
                 <If isTrue={!!!props.value}>
                     <DefaultText style={styles.Placeholder}>
                         {props.placeholder}
@@ -53,12 +77,14 @@ export const DropDow: React.FC<DropDowProps> = (
                     <Arrow height="18" width="18" color={Colors.gray9E} />
                 </If>
             </TouchableOpacity>
-            <OptionList
-                options={props.options}
-                ListStyle={styles.List}
-                OptionContainerStyle={styles.OptionsContainer}
-                TextStyle={styles.OptionText}
-            />
+            <If isTrue={IsModalOpen}>
+                <OptionList
+                    options={props.options}
+                    ListStyle={props.ListStyle}
+                    OptionContainerStyle={props.OptionContainerStyle}
+                    TextStyle={props.TextStyle}
+                />
+            </If>
         </View>
     );
 };

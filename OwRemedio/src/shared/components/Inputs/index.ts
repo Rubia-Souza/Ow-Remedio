@@ -4,7 +4,7 @@ export * from "./NumberInput/DefaultNumberInput";
 export * from "./DateInput/DefaultDateInput";
 export * from "./TimeInput/DefaultTimeInput";
 export * from "./CheckBox/Checkbox";
-export * from "./DropDown/DropDow";
+export * from "./DropDown/DropDown";
 
 export type { CheckboxElementsStyle, } from "./CheckBox/styles";
 export type { DateInputElementsStyles, } from "./DateInput/styles";
