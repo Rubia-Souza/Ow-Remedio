@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import {
+    GestureResponderEvent,
     TouchableOpacity,
     View,
 } from "react-native";
@@ -38,19 +39,22 @@ export const RadioButton: React.FC<RadioButtonProps> = (
 ) => {
     const [isChecked, setIsChecked] = useState<boolean>(intialState.isChecked);
 
-    const toggleState = (): void => {
+    const toggleState = (event: GestureResponderEvent): void => {
         setIsChecked(!isChecked);
 
         if (isChecked && hasSetFunctionValue(props.onCheck)) {
-            props.onCheck();
+            props.onCheck(event);
         }
         else if (!isChecked && hasSetFunctionValue(props.onUncheck)) {
-            props.onUncheck();
+            props.onUncheck(event);
         }
     };
 
     return (
-        <TouchableOpacity style={[styles.container, props.elementsStyles?.Container]} onPress={toggleState}>
+        <TouchableOpacity 
+            style={[styles.container, props.elementsStyles?.Container]} 
+            onPress={toggleState}
+        >
             <View style={[styles.radioButtonBorder, props.elementsStyles?.RadioButtonBorder]}>
                 <If isTrue={isChecked}>
                     <View style={[styles.radioButtonCircle, props.elementsStyles?.RadioButtonCircle]}/>

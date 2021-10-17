@@ -60,8 +60,10 @@ export const DefaultDateInput: React.FC<DefaultDateInputProps> = (
 
     const handleDateTimeSet = (evt: Event, date?: Date) => {
         setCalendarIsOpen(false);
-        console.log(evt);
-        console.log(date);
+        
+        if (!!date) {
+            setDate(date);
+        }
         
         if (!CalendarIsOpen && hasSetFunctionValue(props.onCalendarClose)){
             props.onCalendarClose();
@@ -90,12 +92,12 @@ export const DefaultDateInput: React.FC<DefaultDateInputProps> = (
                 </TouchableOpacity>
                 <If isTrue={CalendarIsOpen}>
                     <RNDateTimePicker
+                        locale={DefaultLocale}
+                        placeholderText={props.placeholder}
                         {...props}
                         mode="date"
                         value={Date}
-                        locale={DefaultLocale}
                         onChange={handleDateTimeSet}
-                        placeholderText={props.placeholder}
                         style={props.elementsStyles?.TimePicker}
                     />
                 </If>
@@ -107,12 +109,12 @@ export const DefaultDateInput: React.FC<DefaultDateInputProps> = (
         return (
             <View style={[styles.DateTimePickerContainer, props.elementsStyles?.DateInputTextConteiner]}>  
                 <RNDateTimePicker
+                    locale={DefaultLocale}
+                    placeholderText={props.placeholder}
                     {...props}
                     mode="date"
                     value={Date}
-                    locale={DefaultLocale}
                     onChange={handleDateTimeSet}
-                    placeholderText={props.placeholder}
                     style={props.elementsStyles?.TimePicker}
                 />
             </View>

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { 
     View,
     TouchableOpacity,
+    GestureResponderEvent,
 } from "react-native";
 
 import Check from "../../../../imgs/icons/Check";
@@ -49,20 +50,25 @@ export const Checkbox: React.FC<CheckboxProps> = (
         });
     };
 
-    const toggleCheck = (): void => {
+    const toggleCheck = (event: GestureResponderEvent): void => {
         setIsChecked(!IsChecked);
 
         if (IsChecked && hasSetFunctionValue(props.onCheck)) {
-            props.onCheck();
+            props.onCheck(event);
         }
         else if (!IsChecked && hasSetFunctionValue(props.onUncheck)) {
-            props.onUncheck();
+            props.onUncheck(event);
         }
     };
 
     return (
-        <TouchableOpacity onPress={toggleCheck} style={[styles(getStyleProps()).Container, props.elementsStyles?.Container]}>
-            <View style={[styles(getStyleProps()).CheckContainer, props.elementsStyles?.Square]}>
+        <TouchableOpacity 
+            onPress={toggleCheck} 
+            style={[styles(getStyleProps()).Container, props.elementsStyles?.Container]}
+        >
+            <View 
+                style={[styles(getStyleProps()).CheckContainer, props.elementsStyles?.Square]}
+            >
                 <If isTrue={IsChecked}>
                     <Check height="21" width="21" color={Colors.whiteFE} />
                 </If>
